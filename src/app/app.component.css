@@ -1,0 +1,11 @@
+.billz{
+  float: left;
+  width: 100px;
+  padding-top: 300px;
+  width: 170px;
+  margin-left: 10px;
+  position: fixed;
+}
+.billz a {
+  margin-bottom: 2px;
+}

@@ -1,6 +1,8 @@
+
+
 <div id="spinner"></div>
-<div class="content">
-  <h1 class="heading" >Books</h1>
+<div class="content mt-5">
+  <h1 class="heading" >Books </h1>
   <div class="cardd" *ngFor="let book of books">
       <div class="frontWeb" style="background-image: url(http://localhost:8988/photoBook/+{{book.id}})" >
         <p>{{book.name}}</p>
@@ -12,8 +14,15 @@
           <div class="movie_gens">{{book.author}}</div>
           <div>⭐{{book.date_entree}}</div>
 
-          <p class="overview">{{book.description}}</p>
-          <a target="_blank" href="https://www.themoviedb.org/${isMovieOrTv}/${movie.id}" class="button">Reserver</a>
+          <p class="overvieww ">Dans les textes non linéaires, généralement tabulaires, il est difficile de parler de paragraphes : la page est composée de tables ou de tableaux, de graphes et d'histogrammes, d'images (de photographies, de dessins, ou de schémas, etc.), où les informations textuelles figurent dans des pavés de type légende, commentaire, note, etc., chaque segment de texte étant plus ou moins indépendant des autres, et rattaché à un élément non textuel. Il vaut mieux dans ce cas parler de pavé(s), et envisager la composition du document sous l'angle de la topologie (de la mise en page(s))7.</p>
+          <a href="#myModal"  data-toggle="modal" class="button" (click)="onReserver(book)" *ngIf="book.disponiblity == true">Reserver</a>
+          <div *ngIf="book.disponiblity == false ">
+            <a  data-toggle="modal" class="button dd"   >Reserved</a>
+            <p class="text-danger" (loadeddata)="getDateEnd(book.id)">
+            test :   {{dateEnd | date:'medium'}}
+            </p>
+          </div>
+
         </div>
       </div>
 
@@ -21,3 +30,54 @@
 
 
 </div>
+<script>
+  $(document).ready(function(){
+    function alignModal(){
+      var modalDialog = $(this).find(".modal-dialog");
+
+      // Applying the top margin on modal to align it vertically center
+      modalDialog.css("margin-top", Math.max(0, ($(window).height() - modalDialog.height()) / 2));
+    }
+    // Align modal when it is displayed
+    $(".modal").on("shown.bs.modal", alignModal);
+
+    // Align modal when user resize the window
+    $(window).on("resize", function(){
+      $(".modal:visible").each(alignModal);
+    });
+  });
+</script>
+<!-- Modal HTML -->
+<div id="myModal" class="modal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Confirmation</h5>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+      <div class="modal-body">
+
+            <form  class="form-signin " [formGroup]="profileFrom" (ngSubmit)="onSubmit()">
+
+              <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">Reserver le : </label>
+                <input type="date" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" class="form-control" formControlName="startdate">
+              </div>
+
+              <div class="mb-3">
+                <label for="exampleInputPassword1" class="form-label">Date de fin</label>
+                <input type="date" class="form-control" id="exampleInputPassword1" class="form-control" formControlName="enddate">
+              </div>
+
+              <button type="submit" class="btn btn-primary">Submit</button>
+
+            </form>
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-secondary" data-dismiss="modal" >Close</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+

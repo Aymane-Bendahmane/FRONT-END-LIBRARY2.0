@@ -1,0 +1,48 @@
+<div class="container">
+  <div class="card-body">
+    <div class=" card card-header ">Edit Book</div>
+    <div class="card card-body ">
+      <form [formGroup]="bookFormGroup" novalidate>
+        <div class="form-group" hidden>
+          <label>Id : </label>
+          <input type="text" class="form-control" formControlName="id">
+        </div>
+        <div class="form-group">
+          <label>Auteur : </label>
+          <input type="text" class="form-control" formControlName="author">
+        </div>
+        <div class="form-group">
+          <label>Nom du livre : </label>
+          <input type="text" class="form-control" formControlName="name">
+        </div>
+        <div class="form-group">
+          <label>Date Entrée : </label>
+          <input type="date" class="form-control" formControlName="date_entree">
+        </div>
+        <div class="form-group">
+          <label>Description : </label>
+          <input type="text" class="form-control" formControlName="description">
+        </div>
+        <div class="form-group">
+          <label>Disponibilité : </label>
+          <input type="checkbox" formControlName="disponiblity" class="form-check">
+        </div>
+        <button (click)="onSaveBook()" class="btn btn-success">Save</button>
+      </form>
+
+      <div >
+        <img height="150" style="float:left" class="img-thumbnail img-rounded btn img-150"
+             [src]="this.bs.host+'/photoBook/'+book.id+'?ts='+getTS()"/>
+        <button style="float:left" class="m-2" title="Upload une nouvelle photo" class="btn btn-success"
+                (click)="onEditPhoto(book)">
+          <span class="fa fa-upload"></span>
+        </button>
+        <p *ngIf="editPhoto">
+          <input class="m-2" type="file" (change)="onSelectedFile($event)">
+          <button class="m-2" class="btn btn-success" (click)="uploadPhoto()">Upload</button>
+          {{progress}}
+        </p>
+      </div>
+    </div>
+  </div>
+</div>

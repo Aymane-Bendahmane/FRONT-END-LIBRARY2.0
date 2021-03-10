@@ -1,0 +1,53 @@
+<div class="container">
+  <div class="panel panel-primary mt-5">
+
+    <div class="panel-body">
+
+      <button class="btn button" routerLink="/new-student">Ajouter</button>
+
+    </div>
+
+
+    <div class="panel-body">
+      <form #f="ngForm" (ngSubmit)="onChercher(f.value)">
+        <div class="form-group">
+          <input type="text" name="keyword" ngModel>
+          <button type="submit" class="btn button">Chercher</button>
+        </div>
+      </form>
+    </div>
+
+    <table *ngIf="students" class="table table-striped table-responsive-sm table-responsive-xl">
+      <tr>
+        <th>Email</th>
+        <th>Nom</th>
+        <th>Prenom</th>
+
+        <th>Role</th>
+        <th>Semestre</th>
+        <th>Telephone</th>
+      </tr>
+      <tr *ngFor="let s of students.content">
+
+        <td>{{s.email}}</td>
+        <td>{{s.last}}</td>
+        <td>{{s.name}}</td>
+
+        <td>{{s.role}}</td>
+        <td>{{s.semestre}}</td>
+        <td>{{s.telephone}}</td>
+        <td><a class="btn btn-danger" (click)="onDeleteStudents(s)">Delete</a></td>
+        <td><a class="btn btn-success" (click)="onEditStudent(s.id)">Edit</a></td>
+
+      </tr>
+    </table>
+
+    <nav aria-label="Page navigation example" *ngIf="pages">
+      <ul class="pagination">
+        <li class="page-item" class="clickable" [ngClass]="i==currentPage?'active':''" *ngFor="let p of pages; let i = index"><a class="page-link" (click)="onPageStudent(i)">{{i}}</a></li>
+
+      </ul>
+    </nav>
+  </div>
+</div>
+

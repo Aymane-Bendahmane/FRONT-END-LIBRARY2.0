@@ -11,7 +11,7 @@ export class AuthGuardService implements CanActivate{
   constructor(public auth:BookServiceService,private  router:Router) { }
 
   canActivate(): boolean {
-    if (!this.auth.authenticated) {
+    if (!this.auth.isAdmin()) {
       this.router.navigateByUrl('/login');
       return false;
     }

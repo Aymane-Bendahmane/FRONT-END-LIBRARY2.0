@@ -1,0 +1,36 @@
+.clickable{
+  cursor:pointer;
+}
+.button {
+  background-color: #1e1e1f; /* Green */
+  border: none;
+  color: white;
+  padding: 5px;
+  text-align: center;
+  text-decoration: none;
+  display: inline;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+input[type=text]:focus {
+  width: 20%;
+}
+input[type=text] {
+  width: 130px;
+  -webkit-transition: width 0.4s ease-in-out;
+  transition: width 0.4s ease-in-out;
+}
+
+.nav-pills > .active > a, .nav-pills > .active > a:hover {
+
+  background-color: blue;
+
+
+}
+
+.nav>a:hover,
+.nav>a:focus,
+.nav>a:focus {
+  background-color: #050505;
+}

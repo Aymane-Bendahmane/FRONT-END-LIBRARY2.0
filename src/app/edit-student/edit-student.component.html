@@ -1,0 +1,81 @@
+<div class="card card-header-pills ">
+  <button class="btn button" routerLink="/students">Previous </button>
+
+</div>
+<div class="container">
+  <div class="card-body">
+    <div class=" card card-header ">Modifier Etudiant</div>
+    <div class="card card-body ">
+      <div>
+
+        <div class="card-group">
+
+          <label class="control-label">Nom:</label>
+          <input class="form-control" type="text" [(ngModel)]="student.last"/>
+
+        </div>
+        <div class="card-group">
+          <label class="control-label">Prenom:</label>
+          <input class="form-control" type="text" [(ngModel)]="student.name"/>
+
+        </div>
+        <div class="card-group">
+          <label class="control-label">Telephone:</label>
+          <input class="form-control" type="text" [(ngModel)]="student.telephone" />
+
+        </div>
+        <div class="card-group">
+          <label class="control-label">Email:</label>
+          <input class="form-control" type="text" [(ngModel)]="student.email"/>
+
+        </div>
+
+
+
+        <div class="card-group">
+          <label class="control-label">Semestre:</label>
+          <select id="semestre" id="semestre" [(ngModel)]="student.semestre" class="form-control">
+            <option  *ngFor="let sem of semestres" [value]="sem.name">
+              {{sem.name}}
+            </option>
+          </select>
+        </div>
+        <div class="card-group">
+          <label class="control-label">Password:</label>
+          <input class="form-control" type="password" [(ngModel)]="student.password" />
+
+        </div>
+
+        <div class="card-group">
+          <label class="control-label">Role:</label>
+
+          <select  id="role" id="role" [(ngModel)]="student.role" class="form-control">
+            <option  *ngFor="let re of roles" [value]="re.name">
+              {{re.name}}
+            </option>
+          </select>
+
+        </div>
+
+        <!--  <div class="card card-group">-->
+        <!--    <label>Role :</label>-->
+        <!--    <div class="form-control">-->
+        <!--      <label class="radio-inline">-->
+        <!--      <input type="radio" value="USER" name="role" [(ngModel)]="student.role">USER-->
+        <!--      </label>-->
+        <!--      <span></span>-->
+
+        <!--      <label class=" radio-inline">-->
+        <!--        <input type="radio" value="ADMIN" name="role"   [(ngModel)]="student.role">ADMIN-->
+        <!--      </label>-->
+        <!--    </div>-->
+
+        <!--  </div>-->
+        <button type="submit" class="btn button btn-group-toggle" (click)="updateStudents()" >Save</button>
+
+
+      </div>
+    </div>
+
+  </div>
+</div>

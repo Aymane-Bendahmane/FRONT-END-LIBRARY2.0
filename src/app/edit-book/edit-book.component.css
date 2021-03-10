@@ -1,0 +1,43 @@
+.img-size{
+  height:30px;
+}
+.img-150{
+  height:250px
+}
+.heighted{
+  height: 420px
+}
+/************************/
+.card-header{
+  color: #e6deda;
+  background-color: #1a9be6;
+}
+.button {
+  background-color: #1e1e1f; /* Green */
+  border: none;
+  color: white;
+  padding: 5px;
+  text-align: center;
+  text-decoration: none;
+  display: inline;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
+.card-header-pills{
+  position: center;
+  width: 130px;
+
+}
+.controls {
+  display: flex;
+}
+
+.radio {
+  flex: 1 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+

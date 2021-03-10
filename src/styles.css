@@ -1,3 +1,4 @@
+@import "~font-awesome/css/font-awesome.min.css";
 *,
 *:before,
 *:after {
@@ -70,7 +71,7 @@ body {
   max-width: 1000px;
 }
 
-p.overview {
+p.overvieww {
   font-size: 12.5px;
   height: 200px;
   width: 100%;

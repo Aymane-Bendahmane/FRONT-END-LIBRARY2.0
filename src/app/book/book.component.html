@@ -1,0 +1,68 @@
+<div class="container fourth-content first-content mt-5">
+
+
+  <div class="panel panel-primary">
+
+    <div class="panel-body">
+      <button routerLink="/Nbook" class="btn button">Ajouter</button>
+    </div>
+
+    <div class="panel-body">
+      <form #f="ngForm" (ngSubmit)="onSearchBook(f.value)" class="form-inline">
+        <input ngModel name="keyword" type="text">
+        <button type="submit" class="btn button">Chercher</button>
+      </form>
+    </div>
+
+
+    <div class="">
+      <ng-container *ngIf="book$ | async as result" [ngSwitch]="result.dataState">
+        <ng-container *ngSwitchCase="DataStateEnuM.LOADING">
+          Loading....
+        </ng-container>
+        <ng-container *ngSwitchCase="DataStateEnuM.ERROR">
+          <div class="alert-danger">
+            {{result.errorMessage}}
+          </div>
+        </ng-container>
+        <ng-container *ngSwitchCase="DataStateEnuM.LOADED">
+          <div *ngIf="book$">
+            <!--{{result|json}}-->
+            <table class="table table-striped table-responsive-sm table-responsive-xl">
+              <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Author</th>
+                <th>Date Entrée</th>
+                <th>disponibilité</th>
+                <th>Supprimer</th>
+                <th>Modifier</th>
+              </tr>
+              <tr *ngFor="let b of result.data.content">
+                <td>{{b.id}}</td>
+                <td>{{b.name}}</td>
+                <td>{{b.author}}</td>
+                <td>{{b.date_entree}}</td>
+                <td>{{b.disponiblity}}</td>
+                <td>
+                  <button (click)="onDelete(b)" class="btn btn-danger"><span class="fa fa-trash-o"></span></button>
+                </td>
+                <td>
+                  <button (click)="onUpdate(b)" class="btn btn-info"><span class="fa fa-edit"></span></button>
+                </td>
+              </tr>
+            </table>
+          </div>
+        </ng-container>
+      </ng-container>
+
+      <nav aria-label="Page navigation example" *ngIf="pages">
+        <ul class="pagination">
+          <li class="clickable" [ngClass]="i==currentPage?'active':''" *ngFor="let p of pages; let i = index"><a class="page-link" (click)="onPageBook(i)">{{i}}</a></li>
+
+        </ul>
+      </nav>
+    </div>
+
+  </div>
+</div>
